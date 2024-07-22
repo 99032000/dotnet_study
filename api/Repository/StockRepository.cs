@@ -3,13 +3,13 @@ using api.DTO.Stock;
 using api.interfaces;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace api.Repository
 {
     public class StockRepository : IStockRepository
     {
         private readonly ApplicationDBContext _context;
-        // private readonly ApplicationDBContext StockWithComment;
         public StockRepository(ApplicationDBContext context)
         {
             _context = context;
@@ -22,7 +22,7 @@ namespace api.Repository
 
         public async Task<Stock?> GetByIdAsync(int id)
         {
-            var stock = await _context.Stocks.;
+            var stock = await _context.Stocks.Include(s => s.Comments).FirstOrDefaultAsync(s => s.Id == id);
             return stock;
         }
 

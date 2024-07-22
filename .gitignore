@@ -1,3 +1,4 @@
 /.vscode
 /dotnet_study.sln
 /api/appsettings.*
+/api/bin
