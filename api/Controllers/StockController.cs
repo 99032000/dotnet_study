@@ -4,6 +4,7 @@ using api.DTO.Stock;
 using api.Mappers;
 using Microsoft.EntityFrameworkCore;
 using api.interfaces;
+using api.Helpers;
 namespace api.Controllers
 {
     [Route("api/stock")]
@@ -19,9 +20,9 @@ namespace api.Controllers
             _stockRepo = stockRepository;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
-            var stocks = await _stockRepo.GetAllAsync();
+            var stocks = await _stockRepo.GetAllAsync(query);
             var stockDto = stocks.Select(s => s.ToStockDto());
             return Ok(stockDto);
         }
