@@ -2,7 +2,6 @@ using api.Data;
 using Microsoft.AspNetCore.Mvc;
 using api.DTO.Stock;
 using api.Mappers;
-using Microsoft.EntityFrameworkCore;
 using api.interfaces;
 using api.Helpers;
 using Microsoft.AspNetCore.Authorization;
